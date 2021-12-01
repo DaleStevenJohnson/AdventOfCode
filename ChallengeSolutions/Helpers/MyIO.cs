@@ -8,17 +8,66 @@ namespace ChallengeSolutions.Helpers
 {
     internal class MyIO
     {
-        private static string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PuzzleInputs");
-        internal static List<string> ReadFile(int year, int day=1, int part=1)
+        private static string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\ChallengeSolutions" );
+
+        internal static void CreateEmptyDataFiles(int year)
         {
-            var dataFile = GetDataFileName(year, day, part);
-            string[] lines = System.IO.File.ReadAllLines(Path.Combine(_filePath, dataFile);
-            return lines.ToList();
+            for (int day = 1; day < 25; day++)
+            {
+                for (int part = 1; part < 2; part++)
+                {
+                    var dataFilePath = GetDataFilePath(year, day, part, false);
+                    var testFilePath = GetDataFilePath(year, day, part, true);
+                    CreateEmptyDataFile(dataFilePath);
+                    CreateEmptyDataFile(testFilePath);
+                }
+            }
         }
 
-        private static string GetDataFileName(int year, int day, int part)
+       
+
+        internal static List<string> ReadStringsFromFile(int year, int day=1, int part=1, bool isTestFile = false)
         {
-            return $"Y{year}D{day}P{part}.txt";
+            var dataFilePath = GetDataFilePath(year, day, part, isTestFile);
+            List<string> lines = System.IO.File.ReadAllLines(dataFilePath).ToList();               
+            return lines;
+        }
+
+        internal static List<int> ReadIntsFromFile(int year, int day = 1, int part = 1, bool isTestFile = false)
+        {
+            var lines = ReadStringsFromFile(year, day, part, isTestFile);
+            var intList = TryParseStringListToInt(lines, out var success);
+            return intList;
+        }
+
+        private static void CreateEmptyDataFile(string path)
+        {
+            if (!File.Exists(path))
+                File.Create(path);
+        }
+
+        private static List<int> TryParseStringListToInt(List<string> list, out bool success)
+        {
+            success = true;
+            var intList = new List<int>();
+            foreach (var item in list)
+            {
+                if (Int32.TryParse(item, out var result))
+                    intList.Add(result);
+                else
+                    success = false;
+                    return new List<int>();
+            }
+            return intList;
+        }
+
+        
+
+        private static string GetDataFilePath(int year, int day, int part, bool isTestFile)
+        {
+            var directory = isTestFile ? "TestInputs" : "PuzzleInputs";
+            var filename = isTestFile ? $"TestY{year}D{day}P{part}.txt" : $"Y{year}D{day}P{part}.txt";
+            return Path.Combine(_filePath, $"Y{year}", directory, filename);
         }
     }
 }

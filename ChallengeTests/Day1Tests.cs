@@ -1,3 +1,4 @@
+using ChallengeSolutions.Y2021;
 using NUnit.Framework;
 
 namespace ChallengeTests
@@ -12,6 +13,7 @@ namespace ChallengeTests
         [Test]
         public void Test1()
         {
+            var result = Y2021D1.SolveDay1(false);
             Assert.Pass();
         }
     }
