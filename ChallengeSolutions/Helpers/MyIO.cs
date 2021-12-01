@@ -12,9 +12,9 @@ namespace ChallengeSolutions.Helpers
 
         internal static void CreateEmptyDataFiles(int year)
         {
-            for (int day = 1; day < 25; day++)
+            for (int day = 1; day < 26; day++)
             {
-                for (int part = 1; part < 2; part++)
+                for (int part = 1; part < 3; part++)
                 {
                     var dataFilePath = GetDataFilePath(year, day, part, false);
                     var testFilePath = GetDataFilePath(year, day, part, true);
