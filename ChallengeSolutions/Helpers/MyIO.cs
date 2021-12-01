@@ -6,11 +6,11 @@ using System.Text;
 
 namespace ChallengeSolutions.Helpers
 {
-    internal class MyIO
+    public class MyIO
     {
         private static string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\ChallengeSolutions" );
 
-        internal static void CreateEmptyDataFiles(int year)
+        public static void CreateEmptyDataFiles(int year)
         {
             for (int day = 1; day < 26; day++)
             {
@@ -26,14 +26,14 @@ namespace ChallengeSolutions.Helpers
 
        
 
-        internal static List<string> ReadStringsFromFile(int year, int day=1, int part=1, bool isTestFile = false)
+        public static List<string> ReadStringsFromFile(int year, int day=1, int part=1, bool isTestFile = false)
         {
             var dataFilePath = GetDataFilePath(year, day, part, isTestFile);
             List<string> lines = System.IO.File.ReadAllLines(dataFilePath).ToList();               
             return lines;
         }
 
-        internal static List<int> ReadIntsFromFile(int year, int day = 1, int part = 1, bool isTestFile = false)
+        public static List<int> ReadIntsFromFile(int year, int day = 1, int part = 1, bool isTestFile = false)
         {
             var lines = ReadStringsFromFile(year, day, part, isTestFile);
             var intList = TryParseStringListToInt(lines, out var success);
@@ -50,13 +50,15 @@ namespace ChallengeSolutions.Helpers
         {
             success = true;
             var intList = new List<int>();
-            foreach (var item in list)
+            foreach (string item in list)
             {
                 if (Int32.TryParse(item, out var result))
                     intList.Add(result);
                 else
+                {
                     success = false;
-                    return new List<int>();
+                    return new List<int>() { 999 };
+                }
             }
             return intList;
         }
@@ -66,7 +68,7 @@ namespace ChallengeSolutions.Helpers
         private static string GetDataFilePath(int year, int day, int part, bool isTestFile)
         {
             var directory = isTestFile ? "TestInputs" : "PuzzleInputs";
-            var filename = isTestFile ? $"TestY{year}D{day}P{part}.txt" : $"Y{year}D{day}P{part}.txt";
+            var filename = isTestFile ? $"Test Y{year} D{day} P{part}.txt" : $"Y{year} D{day} P{part}.txt";
             return Path.Combine(_filePath, $"Y{year}", directory, filename);
         }
     }
