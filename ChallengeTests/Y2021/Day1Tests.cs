@@ -31,15 +31,29 @@ namespace ChallengeTests.Y2021
         [Test]
         public void SolveDay1WithTestData()
         {
-            var result = Y2021D1.SolveDay1(true);
+            var result = Y2021D1.SolvePart1(true);
             Assert.AreEqual("7", result);
         }
 
+        [Test]
         public void SolveDay1WithPuzzleData()
         {
-            var result = Y2021D1.SolveDay1(false);
-            Assert.AreEqual("7", result);
+            var result = Y2021D1.SolvePart1(false);
+            Assert.AreEqual("1448", result);
         }
 
+        [Test]
+        public void SolveDay2WithTestData()
+        {
+            var result = Y2021D1.SolvePart2(true);
+            Assert.AreEqual("5", result);
+        }
+
+        [Test]
+        public void SolveDay2WithPuzzleData()
+        {
+            var result = Y2021D1.SolvePart2(false);
+            Assert.AreEqual("1471", result);
+        }
     }
 }
