@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ChallengeTests.Y2021
 {
-    public class Day1Tests
+    public class Day2Tests
     {
         [SetUp]
         public void Setup()
@@ -13,47 +13,40 @@ namespace ChallengeTests.Y2021
         }
 
         [Test]
-        public void ReadDay1TestDataStringsTest()
+        public void ReadDay2TestDataStringsTest()
         {
-            var stringPuzzleInput = MyIO.ReadStringsFromFile(2021, 1, 1, true);
-            var stringTestData = new List<string>() { "199", "200", "208", "210", "200", "207", "240", "269", "260", "263"};
+            var stringPuzzleInput = MyIO.ReadStringsFromFile(2021, 2, 1, true);
+            var stringTestData = new List<string>() { "forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2" };
             Assert.That(stringPuzzleInput, Is.EquivalentTo(stringTestData));
         }
 
+
         [Test]
-        public void ReadDay1TestDataIntsTest()
+        public void SolvePart1WithTestData()
         {
-            var intPuzzleInput = MyIO.ReadIntsFromFile(2021, 1, 1, true);
-            var intTestData = new List<int>() { 199, 200, 208, 210, 200, 207, 240, 269, 260, 263 };
-            Assert.That(intPuzzleInput, Is.EquivalentTo(intTestData));
+            var result = Y2021D2.SolvePart1(true);
+            Assert.AreEqual("150", result);
         }
 
         [Test]
-        public void SolveDay1WithTestData()
+        public void SolvePart1WithPuzzleData()
         {
-            var result = Y2021D1.SolvePart1(true);
-            Assert.AreEqual("7", result);
+            var result = Y2021D2.SolvePart1(false);
+            Assert.AreEqual("1693300", result);
         }
 
         [Test]
-        public void SolveDay1WithPuzzleData()
+        public void SolvePart2WithTestData()
         {
-            var result = Y2021D1.SolvePart1(false);
-            Assert.AreEqual("1448", result);
+            var result = Y2021D2.SolvePart2(true);
+            Assert.AreEqual("900", result);
         }
 
         [Test]
-        public void SolveDay2WithTestData()
+        public void SolvePart2WithPuzzleData()
         {
-            var result = Y2021D1.SolvePart2(true);
-            Assert.AreEqual("5", result);
-        }
-
-        [Test]
-        public void SolveDay2WithPuzzleData()
-        {
-            var result = Y2021D1.SolvePart2(false);
-            Assert.AreEqual("1471", result);
+            var result = Y2021D2.SolvePart2(false);
+            Assert.AreEqual("1857958050", result);
         }
     }
 }
