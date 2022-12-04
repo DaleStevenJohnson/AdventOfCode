@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChallengeSolutions.Abstractions;
+﻿using ChallengeSolutions.Abstractions;
 using ChallengeSolutions.Y2022;
 using NUnit.Framework;
 
