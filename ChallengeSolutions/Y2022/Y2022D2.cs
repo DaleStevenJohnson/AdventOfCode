@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ChallengeSolutions.Abstractions;
 using ChallengeSolutions.Helpers;
 
@@ -46,7 +42,6 @@ namespace ChallengeSolutions.Y2022
             }
             return score.ToString();
         }
-
         public int GetRPSValue(RPS choice)
         { 
             switch (choice) 
@@ -57,7 +52,6 @@ namespace ChallengeSolutions.Y2022
                 default: return 0;
             }
         }
-
         public int GetScore(RPS myself, RPS opponent)
         {
             if (opponent == myself)
@@ -87,7 +81,6 @@ namespace ChallengeSolutions.Y2022
                 default: return RPS.Paper;
             }
         }
-
         public RPS GetTurnAction(string turn, RPS opponent)
         {
             if (turn == "Y") return opponent;

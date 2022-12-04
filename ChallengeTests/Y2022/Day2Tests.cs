@@ -37,7 +37,7 @@ namespace ChallengeTests.Y2022
         {
             ISolution day = new Y2022D2();
             var result = day.SolvePart2(day.PuzzleData);
-            Assert.That(result, Is.EqualTo("213089"));
+            Assert.That(result, Is.EqualTo("8295"));
         }
     }
 }
