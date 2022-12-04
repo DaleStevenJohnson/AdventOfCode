@@ -17,7 +17,7 @@ namespace ChallengeSolutions.Y2022
             TestData = MyIO.ReadStringsFromFile(2022, 1, 1, true);
             PuzzleData = MyIO.ReadStringsFromFile(2022, 1, 1, false);
         }
-        public string SolveDay1(List<string> data)
+        public string SolvePart1(List<string> data)
         {
             List<int> elfTotals = SumElfCalories(data);
             
@@ -45,7 +45,7 @@ namespace ChallengeSolutions.Y2022
             return totals;
         }
 
-        public string SolveDay2(List<string> data)
+        public string SolvePart2(List<string> data)
         {
             var elfTotals = SumElfCalories(data);
             elfTotals.Sort();

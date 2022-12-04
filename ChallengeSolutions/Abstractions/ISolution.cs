@@ -10,7 +10,7 @@ namespace ChallengeSolutions.Abstractions
     {
         public List<string> TestData { get; set; }
         public List<string> PuzzleData { get; set; }
-        public string SolveDay1(List<string> data);
-        public string SolveDay2(List<string> data);
+        public string SolvePart1(List<string> data);
+        public string SolvePart2(List<string> data);
     }
 }
