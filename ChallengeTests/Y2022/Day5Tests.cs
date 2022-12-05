@@ -35,35 +35,35 @@ namespace ChallengeTests.Y2022
             var result = day.SolvePart2(day.PuzzleData);
             Assert.That(result, Is.EqualTo("TCGLQSLPW"));
         }
-        [Test]
-        public void PrintStacks()
-        {
-            Y2022D5 day = new Y2022D5();
-            var crates = day.MoveCratesOneAtATime(day.TestData);
-            var result = day.PrintStacks(crates);
-            TestContext.WriteLine(result);
-            Assert.That(result, Is.EqualTo("CMZ"));
-        }
+        //[Test]
+        //public void PrintStacks()
+        //{
+        //    Y2022D5 day = new Y2022D5();
+        //    var crates = day.MoveCratesOneAtATime(day.TestData);
+        //    var result = day.PrintStacks(crates);
+        //    TestContext.WriteLine(result);
+        //    Assert.That(result, Is.EqualTo("CMZ"));
+        //}
 
-        [Test]
-        public void CheckStartingStacks()
-        {
-            Y2022D5 day = new Y2022D5();
-            var crates = day.GenerateCrateStacks(day.TestData, out int _);
-            var result = day.PrintStacks(crates);
-            TestContext.WriteLine(result);
-            Assert.That(result, Is.EqualTo("CMZ"));
-        }
+        //[Test]
+        //public void CheckStartingStacks()
+        //{
+        //    Y2022D5 day = new Y2022D5();
+        //    var crates = day.GenerateCrateStacks(day.TestData, out int _);
+        //    var result = day.PrintStacks(crates);
+        //    TestContext.WriteLine(result);
+        //    Assert.That(result, Is.EqualTo("CMZ"));
+        //}
 
 
-        [Test]
-        public void ChecReversingStacks()
-        {
-            Y2022D5 day = new Y2022D5();
-            var crates = day.GenerateCrateStacks(day.TestData, out int _);
-            var result = day.PrintStacks(day.ReverseStacks(crates));
-            TestContext.WriteLine(result);
-            Assert.That(result, Is.EqualTo("CMZ"));
-        }
+        //[Test]
+        //public void ChecReversingStacks()
+        //{
+        //    Y2022D5 day = new Y2022D5();
+        //    var crates = day.GenerateCrateStacks(day.TestData, out int _);
+        //    var result = day.PrintStacks(day.ReverseStacks(crates));
+        //    TestContext.WriteLine(result);
+        //    Assert.That(result, Is.EqualTo("CMZ"));
+        //}
     }
 }
