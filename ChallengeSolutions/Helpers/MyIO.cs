@@ -24,7 +24,20 @@ namespace ChallengeSolutions.Helpers
             }
         }
 
-       
+        public static int[] ConvertStringArrayToIntArray(string[] array)
+        {
+            var result = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                int conversion;
+                var success = int.TryParse(array[i], out conversion);
+                if (success)
+                    result[i] = conversion;
+                else
+                    result[i] = 0;
+            }
+            return result;
+        }
 
         public static List<string> ReadStringsFromFile(int year, int day=1, int part=1, bool isTestFile = false)
         {
