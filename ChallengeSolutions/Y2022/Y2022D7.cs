@@ -48,6 +48,20 @@ namespace ChallengeSolutions.Y2022
             }
             return Size;
         }
+        public List<int> GetSizes(List<int> sizes)
+        {
+            sizes.Add(Size);
+
+            if (Directories.Count == 0)
+                return sizes;
+
+            foreach (var child in Directories)
+            {
+                sizes = child.GetSizes(sizes);
+            }
+            return sizes;
+
+        }
         public void AddSize(int size)
         { 
             Size += size;
@@ -136,7 +150,7 @@ namespace ChallengeSolutions.Y2022
         {
             
             var fileSystem = CreateFileSystem(data);
-            CalculateSizes(fileSystem);
+            fileSystem.CalculateSize();
             var size = SumValidFolders(fileSystem);
             return size.ToString();
         }
@@ -145,7 +159,29 @@ namespace ChallengeSolutions.Y2022
 
         public string SolvePart2(List<string> data)
         {
-            return "";
+            var TOTAL_SPACE = 70000000;
+            var TARGET_FREE_SPACE = 30000000;
+            var fileSystem = CreateFileSystem(data);
+            fileSystem.CalculateSize();
+            var sizes = fileSystem.GetSizes(new List<int>());
+            sizes = sizes.OrderBy(i => i).ToList();
+                        
+            var USED_SPACE = fileSystem.Size;
+            var UNUSED_SPACE = TOTAL_SPACE - USED_SPACE;
+            var difference = TARGET_FREE_SPACE - UNUSED_SPACE;
+
+            var smallestViableDirectory = fileSystem.Size;
+
+            foreach (var size in sizes)
+            {
+                if (size >= difference)
+                {
+                    smallestViableDirectory = size;
+                    break;
+                }
+            }
+
+            return smallestViableDirectory.ToString();
         }
     }
 }

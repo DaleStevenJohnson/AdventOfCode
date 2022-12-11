@@ -20,21 +20,21 @@ namespace ChallengeTests.Y2022
         {
             ISolution day = new Y2022D7();
             var result = day.SolvePart1(day.PuzzleData);
-            Assert.That(result, Is.EqualTo("?"));
+            Assert.That(result, Is.EqualTo("1583951"));
         }
         [Test]
         public void Part2SampleData()
         {
             ISolution day = new Y2022D7();
             var result = day.SolvePart2(day.TestData);
-            Assert.That(result, Is.EqualTo("?"));
+            Assert.That(result, Is.EqualTo("24933642"));
         }
         [Test]
         public void Part2PuzzleData()
         {
             ISolution day = new Y2022D7();
             var result = day.SolvePart2(day.PuzzleData);
-            Assert.That(result, Is.EqualTo("?"));
+            Assert.That(result, Is.EqualTo("214171"));
         }
 
 
