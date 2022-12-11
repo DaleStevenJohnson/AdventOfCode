@@ -31,31 +31,18 @@ namespace ChallengeSolutions.Y2022
                 isVisible = true;
         }
 
-        public bool CheckIsVisibleColumn(int start, int stop, List<string> data)
-        { 
-            bool currentlyVisible = true;
-            for (int column = start; column < stop; column++)
-            {
-                var treeHeight = int.Parse(data[column][X].ToString());
-                if (treeHeight >= Height)
-                { 
-                    currentlyVisible= false;
-                    break;
-                }
-            }
-
-            if (!isVisible)
-                isVisible= currentlyVisible;
-
-            return isVisible;
-        }
-
-        public bool CheckIsVisibleRow(int start, int stop, List<string> data)
+        public bool CheckIsVisibleRowOrColumn(int start, int stop, string searchType, List<string> data)
         {
             bool currentlyVisible = true;
-            for (int row = start; row < stop; row++)
+            for (int position = start; position < stop; position++)
             {
-                var treeHeight = int.Parse(data[Y][row].ToString());
+                int treeHeight;
+                
+                if (searchType == "row")
+                    treeHeight = int.Parse(data[Y][position].ToString());
+                else
+                    treeHeight = int.Parse(data[position][X].ToString());
+                
                 if (treeHeight >= Height)
                 {
                     currentlyVisible = false;
@@ -73,16 +60,17 @@ namespace ChallengeSolutions.Y2022
         { 
             if (isVisible) return true;
 
-            CheckIsVisibleColumn(0, Y, data);
-            CheckIsVisibleColumn(Y+1, MaxY, data);
-            CheckIsVisibleRow(0, X, data);
-            CheckIsVisibleRow(X+1, MaxX, data);
+            CheckIsVisibleRowOrColumn(0, Y, "column", data);
+            CheckIsVisibleRowOrColumn(Y+1, MaxY, "column", data);
+            CheckIsVisibleRowOrColumn(0, X, "row", data);
+            CheckIsVisibleRowOrColumn(X+1, MaxX, "row", data);
 
             return isVisible;
         }
 
-        public int CalculateScenicScore()
+        public int CalculateScenicScore(List<string> data)
         {
+         
             return ScenicScore;
         }
     }
