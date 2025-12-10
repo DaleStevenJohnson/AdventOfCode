@@ -11,7 +11,7 @@ class LocalCache:
     def get_filename(self, day: int):
         return f"Day-{day}.txt"
 
-    def put(self, day: int, data: str) -> bool:
+    def persist(self, day: int, data: str) -> bool:
         try:
             self._path.joinpath(self.get_filename(day)).write_text(data)
             return True
